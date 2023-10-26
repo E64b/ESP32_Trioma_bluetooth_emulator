@@ -30,3 +30,5 @@
 *.exe
 *.out
 *.app
+/.vs/ESP32_Trioma_bluetooth_emulator/FileContentIndex
+/.vs/ESP32_Trioma_bluetooth_emulator/v17
