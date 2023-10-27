@@ -42,6 +42,13 @@ static const char* APP_AV_STATE_STR[]={
 	};
 
 
+/**
+ * @brief A2DP Bluetooth Source
+ * @ingroup a2dp
+ * @author Phil Schatzmann
+ * @copyright Apache License Version 2
+ */
+
 class BluetoothA2DPSource: public BluetoothA2DPCommon{
 	friend void ccall_bt_av_hdl_stack_evt(uint16_t event, void* p_param);
 	friend void ccall_bt_app_task_handler(void* arg);

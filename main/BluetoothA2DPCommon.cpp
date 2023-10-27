@@ -303,12 +303,6 @@ void BluetoothA2DPCommon::set_scan_mode_connectable(bool connectable){
 
 #include "BluetoothA2DPCommon.h"
 
-/**
- * @brief Startup logic as implemented by Arduino - This is not available if we use this library outside of Arduino
- *
- * @return true
- * @return false
- */
 bool btStart(){
 	esp_bt_controller_config_t cfg=BT_CONTROLLER_INIT_CONFIG_DEFAULT();
 	if(esp_bt_controller_get_status()==ESP_BT_CONTROLLER_STATUS_ENABLED){
@@ -332,10 +326,6 @@ bool btStart(){
 	return false;
 	}
 
-/**
- * @brief call vTaskDelay to deley for the indicated number of milliseconds
- *
- */
 void delay(long millis){
 	const TickType_t xDelay=millis/portTICK_PERIOD_MS;
 	vTaskDelay(xDelay);

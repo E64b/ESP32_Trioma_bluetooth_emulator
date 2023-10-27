@@ -38,15 +38,6 @@ extern "C" {
 		Undefined, Confirm, Reply
 		};
 
-	/**
-	 * @brief A2DP Bluethooth Sink - We initialize and start the Bluetooth A2DP Sink.
-	 * The example https://github.com/espressif/esp-idf/tree/master/examples/bluetooth/bluedroid/classic_bt/a2dp_sink
-	 * was refactered into a C++ class
-	 * @ingroup a2dp
-	 * @author Phil Schatzmann
-	 * @copyright Apache License Version 2
-	 */
-
 	class BluetoothA2DPSink: public BluetoothA2DPCommon{
 
 		/// handle esp_a2d_cb_event_t 
@@ -426,12 +417,12 @@ extern "C" {
 			set_scan_mode_connectable(true);
 			}
 
-		};
+			};
 
 
 
 	#ifdef __cplusplus
-	}
+		}
 #endif
 
 

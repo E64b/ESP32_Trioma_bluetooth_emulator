@@ -1,18 +1,16 @@
 #pragma once
 #pragma pack(1, push)
 
-#include "/lib/BluetoothA2DPSink.h"
-#include "lib/j1850vpw.h"
+#include "BluetoothA2DPSink.h"
+//#include "j1850vpw.h"
 #include <math.h> 
 #include <stdio.h>
+#include <Arduino.h>
 
-#ifndef LED_BUILTIN
 #define LED_BUILTIN 13
-#endif
-
-#define STORAGE_SIZE 60
-#define RX 19
-#define TX 20
+//#define STORAGE_SIZE 60
+//#define RX 19
+//#define TX 20
 
 typedef struct{
 	uint8_t code;
@@ -22,25 +20,26 @@ typedef struct{
 	} KeyData;
 
 typedef struct{
-	uint16_t Key;
-	uint16_t Vol=30;
-	uint16_t Old_Vol;
-	bool Pong;
-	uint32_t timer;
-	} UIState;
-
-typedef struct{
 	uint8_t code;
 	uint16_t Control;
 	uint8_t crc;
 	} CDData;
 
-extern BluetoothA2DPSink a2dp;
-extern J1850VPW vpw;
+typedef struct{
+	uint16_t Key;
+	uint16_t Vol=128;
+	uint16_t Old_Vol;
+	bool Pong;
+	uint32_t timer;
+	bool pause;
+	} UIState;
+
+extern BluetoothA2DPSink a2dp_sink;
+//extern J1850VPW vpw;
 extern UIState uiState;
 
-void EmulatedKeys();
-void readJ1850Messages();
+//void EmulatedKeys();
+//void readJ1850Messages();
 //void ChangerActivate();
 void bt_music();
 

@@ -1,4 +1,3 @@
-
 #include "BluetoothA2DPSinkQueued.h"
 #if A2DP_I2S_SUPPORT
 

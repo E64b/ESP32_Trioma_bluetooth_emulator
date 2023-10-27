@@ -170,11 +170,6 @@ void BluetoothA2DPSource::start_raw(std::vector<const char*> names,
 		get_last_connection();
 		}
 
-	// commented out because this is not working: the only way to get reliable reconnects
-	// is to close the session properly before restarting!
-	// reset last connection if we do not reconnect
-	//reset_last_connection();
-
 	if(nvs_init){
 		// Initialize NVS (Non-volatile storage library).
 		esp_err_t ret=nvs_flash_init();
@@ -582,7 +577,7 @@ void BluetoothA2DPSource::bt_av_hdl_stack_evt(uint16_t event, void* p_param){
 					memcpy(peer_bd_addr, last_connection, ESP_BD_ADDR_LEN);
 					connect_to(last_connection);
 					s_a2d_state=APP_AV_STATE_CONNECTING;
-					} else{
+				} else{
 
 					ESP_LOGI(BT_AV_TAG, "Starting device discovery...");
 					s_a2d_state=APP_AV_STATE_DISCOVERING;
@@ -594,15 +589,15 @@ void BluetoothA2DPSource::bt_av_hdl_stack_evt(uint16_t event, void* p_param){
 								   (void*)&tmr_id, ccall_a2d_app_heart_beat);
 				xTimerStart(s_tmr, portMAX_DELAY);
 				break;
-				}
+		}
 				/* other */
 			default:
 				{
 				ESP_LOGW(BT_AV_TAG, "%s unhandled event: %d", __func__, event);
 				break;
 				}
-		}
 	}
+}
 
 void BluetoothA2DPSource::bt_app_a2d_cb(esp_a2d_cb_event_t event,
 										esp_a2d_cb_param_t* param){
@@ -971,7 +966,7 @@ void BluetoothA2DPSource::bt_av_hdl_avrc_ct_evt(uint16_t event, void* p_param){
 					}
 				#endif
 				break;
-				}
+		}
 				/* when passthrough responsed, this event comes */
 			case ESP_AVRC_CT_PASSTHROUGH_RSP_EVT:
 				{
@@ -1019,7 +1014,7 @@ void BluetoothA2DPSource::bt_av_hdl_avrc_ct_evt(uint16_t event, void* p_param){
 
 				bt_av_volume_changed();
 				break;
-				}
+	}
 				/* when set absolute volume responsed, this event comes */
 			case ESP_AVRC_CT_SET_ABSOLUTE_VOLUME_RSP_EVT:
 				{
@@ -1046,7 +1041,7 @@ bool BluetoothA2DPSource::write_data(SoundData* data){
 	this->sound_data_current_pos=0;
 	this->has_sound_data_flag=true;
 	return true;
-	}
+				}
 
 int32_t BluetoothA2DPSource::get_data_default(uint8_t* data, int32_t len){
 	uint32_t result_len;
