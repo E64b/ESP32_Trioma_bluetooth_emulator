@@ -8,7 +8,7 @@
 #include <Arduino.h>
 
 #define LED_BUILTIN 13
-//#define STORAGE_SIZE 60
+#define STORAGE_SIZE 60
 //#define RX 19
 //#define TX 20
 
@@ -38,7 +38,7 @@ extern BluetoothA2DPSink a2dp_sink;
 //extern J1850VPW vpw;
 extern UIState uiState;
 
-//void EmulatedKeys();
+void EmulatedKeys();
 //void readJ1850Messages();
 //void ChangerActivate();
 void bt_music();
